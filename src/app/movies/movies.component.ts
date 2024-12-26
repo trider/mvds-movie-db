@@ -31,7 +31,10 @@ export class MoviesComponent implements OnInit {
     total: number = 0
     chartVals: any = []
     chartData: any = [
-        { "date": "2024-11-07", "value": 1 }, { "date": "2024-07-31", "value": 1 }, { "date": "2024-09-08", "value": 1 }, { "date": "2024-10-14", "value": 1 }, { "date": "2023-06-08", "value": 1 }, { "date": "2024-09-07", "value": 1 }, { "date": "2024-07-24", "value": 1 }, { "date": "2024-10-09", "value": 1 }, { "date": "2024-11-27", "value": 1 }];
+        { "date": "2024-11-07", "value": 1 }, { "date": "2024-07-31", "value": 1 }, { "date": "2024-09-08", "value": 1 }, 
+        { "date": "2024-10-14", "value": 1 }, { "date": "2023-06-08", "value": 1 }, { "date": "2024-09-07", "value": 1 }, 
+        { "date": "2024-07-24", "value": 1 }, { "date": "2024-10-09", "value": 1 }, { "date": "2024-11-27", "value": 1 }
+    ];
 
     constructor(
         private httpService: HttpService,
@@ -50,27 +53,22 @@ export class MoviesComponent implements OnInit {
             this.total = data.total_pages
             let dateList = new Set()
             this.movies.map((movie: any) => {
-                dateList.add(movie.release_date)
+                dateList.add(movie.release_date.toString())
             })
+            this.chartData = []
 
             dateList.forEach((date) => {
                 this.chartVals.push({
                     date: date,
                     value: this.movies.filter((res: any) => res.release_date === date).length,
-                    opacity: 0
+                    opacity: 10
                 })
             })
 
-            this.chartData= [...this.chartData, this.chartVals]
+            this.chartData = [...this.chartVals]
 
 
-            // this.data = [...data.results.map((movie: any, index:number=1) => {
-            // //   console.log(movie)
-            //   return {
-            //     date:movie.release_date.toString(),
-            //     value:movie
-            //   }
-            // })]
+          
 
         });
     }

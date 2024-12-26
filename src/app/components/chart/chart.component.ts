@@ -90,26 +90,13 @@ export class ChartComponent implements OnInit{
     return trend;
   };
   
-  // createTrendLine([
-  //   { "date": "2012-01-02", "value": 1 },
-  //   { "date": "2012-01-11", "value": 19 }
-  // ]);
-  
-  // let lastTrend = createTrendLine([
-  //   { "date": "2012-01-17", "value": 1 },
-  //   { "date": "2012-01-22", "value": 10 }
-  // ]);
-  
-  // // Initial zoom once chart is ready
-  // lastTrend.events.once("datavalidated", function(){
-  //   series.xAxis.zoomToDates(new Date(2012, 0, 2), new Date(2012, 0, 13));
-  // });
+
 
       
       
 
      
-      this.chart = chart
+      // this.chart = chart
     });
   }
 
