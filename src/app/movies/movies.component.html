@@ -1,25 +1,49 @@
 <app-navbar></app-navbar>
 <div class="container-fluid">
-  <div class="card" *ngFor="let movie of movies" style="margin: 15px;">
+ <app-chart [chartData]="chartData"></app-chart>
+
+ 
+ <div class="d-grid gap-2 d-md-flex justify-content-md-center" style="margin:15px">
+  <button class="btn btn-primary rounded-pill" (click)="setPrev()">Previous</button>
+  <button class="btn btn-primary rounded-pill" (click)="setNext()">Next</button>
+ </div>
+ <div *ngFor="let movie of movies;let i = index" style="margin: 10px;">
+  <div class="card" (click)="openPage(movie)">
    <div class="card-header">
-     <h2>{{movie.original_title}}</h2>
+     <h5>{{movie.original_title}}</h5>
    </div>
    
 
    <div class="card-body">
+    
      <div class="row">
-      <div class="col">Release Date:{{movie.release_date}}</div>
-      <div class="col">Popularity: {{movie.popularity}}</div>
       <div class="col">
-        Rating:<span *ngIf="movie.adult">Family</span><span *ngIf="!movie.adult">Adult</span>
+        Release Date:{{movie.release_date}}<br/>
+        Popularity: {{movie.popularity}}<br/>
+        Rating:<span *ngIf="movie.adult===false">Family</span><span *ngIf="movie.adult">Adult</span>
       </div>
+      <div class="col-6">
+       {{movie.overview}}
      </div>
+ 
+     </div>
+    
  
 
    </div>
+   
+    
 
+  </div>
 
-
+ </div>
+ 
+ 
+  <div class="d-grid gap-2 d-md-flex justify-content-md-center" style="margin:15px">
+   <div class="d-grid gap-2 d-md-flex justify-content-md-center" style="margin:15px">
+    <button class="btn btn-primary rounded-pill" (click)="setPrev()">Previous</button>
+    <button class="btn btn-primary rounded-pill" (click)="setNext()">Next</button>
+   </div>
   </div>
 </div>
 <app-footer></app-footer>
